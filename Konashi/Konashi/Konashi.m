@@ -29,6 +29,7 @@
 @interface Konashi ()
 
 @property (nonatomic, strong) NSString *findName;
+@property (nonatomic, weak) void (^findCompletion)(NSSet *peripherals);
 @property (nonatomic, assign) BOOL callFind;
 @property (nonatomic, strong) KNSHandlerManager *handlerManager;
 
@@ -65,8 +66,9 @@
 				if (self.findName) {
 					KNS_LOG(@"Try findWithName");
 					[Konashi findWithName:self.findName];
-				}
-				else {
+                } else if (self.findCompletion) {
+                    [Konashi find:self.findCompletion];
+                } else {
 					[Konashi find];
 				}
 			}
@@ -106,23 +108,43 @@
 #pragma mark -
 #pragma mark - Konashi control public methods
 
++ (KonashiResult) _find
+{
+    if([Konashi shared].activePeripheral && [Konashi shared].activePeripheral.state == CBPeripheralStateConnected){
+        return KonashiResultFailure;
+    }
+    if ([KNSCentralManager sharedInstance].state  != CBCentralManagerStatePoweredOn) {
+        KNS_LOG(@"CoreBluetooth not correctly initialized !");
+        KNS_LOG(@"State = %ld (%@)", (long)[KNSCentralManager sharedInstance].state, NSStringFromCBCentralManagerState([KNSCentralManager sharedInstance].state));
+        [Konashi shared].callFind = YES;
+        return KonashiResultSuccess;
+    }
+    return KonashiResultSuccess;
+}
+
 + (KonashiResult) find
 {
-	if([Konashi shared].activePeripheral && [Konashi shared].activePeripheral.state == CBPeripheralStateConnected){
-		return KonashiResultFailure;
-	}
-	
-	if ([KNSCentralManager sharedInstance].state  != CBCentralManagerStatePoweredOn) {
-		KNS_LOG(@"CoreBluetooth not correctly initialized !");
-		KNS_LOG(@"State = %ld (%@)", (long)[KNSCentralManager sharedInstance].state, NSStringFromCBCentralManagerState([KNSCentralManager sharedInstance].state));
-		[Konashi shared].callFind = YES;
-		return KonashiResultSuccess;
-	}
-	
-	[[KNSCentralManager sharedInstance] showPeripherals];
-	
-	return KonashiResultSuccess;
+    KonashiResult r = [Konashi _find];
+    if (r == KonashiResultSuccess) {
+        [[KNSCentralManager sharedInstance] showPeripherals];
+    }
+	return r;
 }
+
++ (KonashiResult) find:(void (^)(NSSet *peripherals))completion
+{
+    [Konashi shared].findCompletion = completion;
+    KonashiResult r = [Konashi _find];
+    if (r == KonashiResultSuccess) {
+        if(completion) {
+            [[KNSCentralManager sharedInstance] listPeripherals:completion];
+        } else {
+            assert(false);
+        }
+    }
+    return r;
+}
+
 
 + (KonashiResult) findWithName:(NSString*)name
 {

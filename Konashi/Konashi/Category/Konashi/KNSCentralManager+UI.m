@@ -21,6 +21,17 @@
 	} timeoutInterval:KonashiFindTimeoutInterval];
 }
 
+- (void)listPeripherals:(void (^)(NSSet *peripherals))completion
+{
+    [self discover:^(CBPeripheral *peripheral, BOOL *stop) {
+    } completionBlock:^(NSSet *peripherals, BOOL timeout) {
+        if(completion) {
+            completion(peripherals);
+        }
+    } timeoutInterval:KonashiFindTimeoutInterval];
+}
+
+
 static NSArray *peripheralArray;
 
 - (void)showModulePickerWithPeripherals:(NSArray *)peripherals

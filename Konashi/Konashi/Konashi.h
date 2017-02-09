@@ -119,6 +119,7 @@
  *  @return 探索が開始された場合は KonashiResultSuccess 、既に接続されている場合は KonashiResultFailure 。
  */
 + (KonashiResult) find;
++ (KonashiResult) find:(void (^)(NSSet *peripherals))completion;
 
 /**
  *  konashiの名前を指定して接続します。

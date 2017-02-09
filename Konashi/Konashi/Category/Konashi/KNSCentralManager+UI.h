@@ -12,5 +12,6 @@
 @interface KNSCentralManager (UI) <UIActionSheetDelegate>
 
 - (void)showPeripherals;
+- (void)listPeripherals:(void (^)(NSSet *peripherals))completion;
 
 @end
