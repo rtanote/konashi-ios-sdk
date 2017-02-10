@@ -110,9 +110,10 @@
 
 + (KonashiResult) _find
 {
-    if([Konashi shared].activePeripheral && [Konashi shared].activePeripheral.state == CBPeripheralStateConnected){
-        return KonashiResultFailure;
-    }
+    // FIXME: multiple connection
+    //if([Konashi shared].activePeripheral && [Konashi shared].activePeripheral.state == CBPeripheralStateConnected){
+    //    return KonashiResultFailure;
+    //}
     if ([KNSCentralManager sharedInstance].state  != CBCentralManagerStatePoweredOn) {
         KNS_LOG(@"CoreBluetooth not correctly initialized !");
         KNS_LOG(@"State = %ld (%@)", (long)[KNSCentralManager sharedInstance].state, NSStringFromCBCentralManagerState([KNSCentralManager sharedInstance].state));
