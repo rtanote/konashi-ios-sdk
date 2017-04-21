@@ -888,7 +888,7 @@ static NSString *const kSoftwareRevisionStringCharacteristiceUUIDString = @"2a28
 	if (self.handlerManager.i2cReadCompleteHandler) {
 		self.handlerManager.i2cReadCompleteHandler(i2cReadData);
 	}
-	[[NSNotificationCenter defaultCenter] postNotificationName:KonashiEventI2CReadCompleteNotification object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:KonashiEventI2CReadCompleteNotification object:self];
 }
 
 #pragma mark - UART
