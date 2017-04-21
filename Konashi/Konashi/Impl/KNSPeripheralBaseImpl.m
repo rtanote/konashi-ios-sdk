@@ -889,7 +889,8 @@ static NSString *const kSoftwareRevisionStringCharacteristiceUUIDString = @"2a28
 		self.handlerManager.i2cReadCompleteHandler(i2cReadData);
 	}
 	[[NSNotificationCenter defaultCenter] postNotificationName:KonashiEventI2CReadCompleteNotification object:self];
-    NSLog([self debugDescription]);
+    KNS_LOG(@"I2CReadCompleteNotification Posted : %@", [self debugDescription]);
+    
 }
 
 #pragma mark - UART
