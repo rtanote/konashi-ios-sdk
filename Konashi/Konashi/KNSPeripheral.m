@@ -274,6 +274,11 @@
 	return [_impl pwmLedDrive:pin dutyRatio:ratio];
 }
 
+- (KonashiResult) pwmLedDrive2:(KonashiDigitalIOPin)pin dutyRatio:(double)ratio
+{
+    return [_impl pwmLedDrive2:pin dutyRatio:ratio];
+}
+
 - (KonashiResult) readValueAio:(KonashiAnalogIOPin)pin
 {
 	return [_impl readValueAio:pin];

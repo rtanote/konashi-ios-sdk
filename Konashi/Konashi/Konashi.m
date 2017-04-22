@@ -263,6 +263,12 @@
 	return [[Konashi shared].activePeripheral pwmLedDrive:pin dutyRatio:ratio];
 }
 
++ (KonashiResult) pwmLedDrive2:(KonashiDigitalIOPin)pin dutyRatio:(double)ratio
+{
+    return [[Konashi shared].activePeripheral pwmLedDrive2:pin dutyRatio:ratio];
+}
+
+
 #pragma mark -
 #pragma mark - Konashi analog IO public methods
 

@@ -43,21 +43,21 @@
 }
 
 - (IBAction)changeLedBrightness20:(id)sender {
-    [Konashi pwmLedDrive:KonashiLED2 dutyRatio:20.0];
+    [Konashi pwmLedDrive2:KonashiLED2 dutyRatio:20.0];
 }
 
 - (IBAction)changeLedBrightness50:(id)sender {
-    [Konashi pwmLedDrive:KonashiLED2 dutyRatio:50.0];
+    [Konashi pwmLedDrive2:KonashiLED2 dutyRatio:50.0];
 }
 
 - (IBAction)changeLedBrightness80:(id)sender {
-    [Konashi pwmLedDrive:KonashiLED2 dutyRatio:80.0];
+    [Konashi pwmLedDrive2:KonashiLED2 dutyRatio:80.0];
 }
 
 - (IBAction)changeLedBrightnessBar:(id)sender {
     NSLog(@"Brightness: %f", self.brightnessSlider.value);
     
-    [Konashi pwmLedDrive:KonashiLED2 dutyRatio:self.brightnessSlider.value];
+    [Konashi pwmLedDrive2:KonashiLED2 dutyRatio:self.brightnessSlider.value];
 }
 
 @end

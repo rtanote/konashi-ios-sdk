@@ -301,6 +301,8 @@
  */
 + (KonashiResult) pwmLedDrive:(KonashiDigitalIOPin)pin dutyRatio:(int)ratio;
 
++ (KonashiResult) pwmLedDrive2:(KonashiDigitalIOPin)pin dutyRatio:(double)ratio;
+
 /// ---------------------------------
 /// @name Analog I/O (AIO)
 /// ---------------------------------

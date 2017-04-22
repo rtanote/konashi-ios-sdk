@@ -144,6 +144,11 @@
 			attributes = {
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "YUKAI Engineering.Inc";
+				TargetAttributes = {
+					085A3154168A6B6D00A75E66 = {
+						DevelopmentTeam = LWJF33TSVU;
+					};
+				};
 			};
 			buildConfigurationList = 085A314F168A6B6D00A75E66 /* Build configuration list for PBXProject "PwmDrive" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -266,6 +271,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = LWJF33TSVU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PwmDrive/PwmDrive-Prefix.pch";
 				INFOPLIST_FILE = "PwmDrive/PwmDrive-Info.plist";
@@ -288,6 +294,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				DEVELOPMENT_TEAM = LWJF33TSVU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PwmDrive/PwmDrive-Prefix.pch";
 				INFOPLIST_FILE = "PwmDrive/PwmDrive-Info.plist";

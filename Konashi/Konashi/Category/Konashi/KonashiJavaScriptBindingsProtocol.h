@@ -36,6 +36,7 @@ JSExportAs(pwmMode, + (KonashiResult) pwmMode:(KonashiDigitalIOPin)pin mode:(Kon
 JSExportAs(pwmPeriod, + (KonashiResult) pwmPeriod:(KonashiDigitalIOPin)pin period:(unsigned int)period);
 JSExportAs(pwmDuty, + (KonashiResult) pwmDuty:(KonashiDigitalIOPin)pin duty:(unsigned int)duty);
 JSExportAs(pwmLedDrive, + (KonashiResult) pwmLedDrive:(KonashiDigitalIOPin)pin dutyRatio:(int)ratio);
+JSExportAs(pwmLedDrive2, + (KonashiResult) pwmLedDrive2:(KonashiDigitalIOPin)pin dutyRatio:(double)ratio);
 
 // Analog IO methods
 + (int) analogReference;

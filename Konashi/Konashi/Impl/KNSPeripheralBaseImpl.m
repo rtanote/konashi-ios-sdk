@@ -700,6 +700,22 @@ static NSString *const kSoftwareRevisionStringCharacteristiceUUIDString = @"2a28
 	return [self pwmDuty:pin duty:duty];
 }
 
+- (KonashiResult) pwmLedDrive2:(KonashiDigitalIOPin)pin dutyRatio:(double)ratio
+{
+    int duty;
+    
+    if(ratio < 0.0){
+        ratio = 0.0;
+    }
+    if(ratio > 100.0){
+        ratio = 100.0;
+    }
+    
+    duty = (int)(KonashiLEDPeriod * ratio / 100);
+    
+    return [self pwmDuty:pin duty:duty];
+}
+
 #pragma mark - Analog
 
 - (KonashiResult) readValueAio:(KonashiAnalogIOPin)pin

@@ -85,6 +85,7 @@
 - (KonashiResult) pwmPeriod:(KonashiDigitalIOPin)pin period:(unsigned int)period;
 - (KonashiResult) pwmDuty:(KonashiDigitalIOPin)pin duty:(unsigned int)duty;
 - (KonashiResult) pwmLedDrive:(KonashiDigitalIOPin)pin dutyRatio:(int)ratio;
+- (KonashiResult) pwmLedDrive2:(KonashiDigitalIOPin)pin dutyRatio:(double)ratio;
 
 - (KonashiResult) readValueAio:(KonashiAnalogIOPin)pin;
 
