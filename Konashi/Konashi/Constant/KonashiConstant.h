@@ -62,6 +62,8 @@ static NSString *const KonashiEventDidFindSoftwareRevisionStringNotification = @
 static NSString *const KonashiEventSPIWriteCompleteNotification = @"KonashiEventSPIWriteCompleteNotification";
 static NSString *const KonashiEventSPIReadCompleteNotification = @"KonashiEventSPIReadCompleteNotification";
 
+static NSString *const KonashiEventAccelerometerCompleteNotification = @"KonashiEventAccelerometerCompleteNotification";
+
 static NSString *const KonashiLegacyRevisionString = @"T1.0.0";
 
 static NSTimeInterval const KonashiFindTimeoutInterval = 2;

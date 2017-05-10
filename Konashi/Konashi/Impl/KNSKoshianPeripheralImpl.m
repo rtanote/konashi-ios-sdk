@@ -12,6 +12,7 @@
 @interface KNSKoshianPeripheralImpl ()
 
 @property (nonatomic, strong) NSData *spiReadData;
+@property (nonatomic, strong) NSData *accReadData;
 
 @end
 
@@ -236,6 +237,12 @@
 	return kns_CreateUUIDFromString(@"8e922cce-eec6-47b0-b46d-09563a8da638", uuid);
 }
 
++ (CBUUID *)accelerometerCharacteristicDataUUID
+{
+    static CBUUID *uuid;
+    return kns_CreateUUIDFromString(@"229B30F0-03FB-40DA-98A7-B0DEF65C2D4B", uuid);
+}
+
 #pragma mark - UART
 
 - (KonashiResult) uartWriteData:(NSData *)data
@@ -406,6 +413,12 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:KonashiEventSPIReadCompleteNotification object:nil];
 }
 
+- (void)accDataDidUpdate:(NSData *)data
+{
+    self.accReadData = data;
+    [[NSNotificationCenter defaultCenter] postNotificationName:KonashiEventAccelerometerCompleteNotification object:self];
+}
+
 - (void)enableSPINotification
 {
 	[self notificationWithServiceUUID:[[self class] serviceUUID] characteristicUUID:[[self class] spiNotificationUUID] on:YES];
@@ -434,7 +447,11 @@
 				self.handlerManager.spiWriteCompleteHandler();
 			}
 		}
-	}
+        // 加速度センサー用の通知を追加
+        else if ([characteristic.UUID kns_isEqualToUUID:[[self class] accelerometerCharacteristicDataUUID]]) {
+            [self accDataDidUpdate:characteristic.value];
+        }
+    }
 }
 
 @end

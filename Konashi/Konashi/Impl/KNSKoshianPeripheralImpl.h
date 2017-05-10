@@ -16,6 +16,7 @@
 @property (nonatomic, assign) KonashiSPISpeed spiSpeed;
 @property (nonatomic, assign) KonashiSPIBitOrder spiBitOrder;
 @property (nonatomic, readonly) NSData *spiReadData;
+@property (nonatomic, readonly) NSData *accReadData;
 
 + (CBUUID *)upgradeServiceUUID;
 + (CBUUID *)upgradeCharacteristicControlPointUUID;

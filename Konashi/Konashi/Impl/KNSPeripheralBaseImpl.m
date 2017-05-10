@@ -148,7 +148,7 @@ static NSString *const kSoftwareRevisionStringCharacteristiceUUIDString = @"2a28
 			if (self.handlerManager.readyHandler) {
 				self.handlerManager.readyHandler();
 			}			
-			//read software revision string
+            //read software revision string
 			[self readDataWithServiceUUID:[CBUUID UUIDWithString:kDeviceInformationServiceUUIDString] characteristicUUID:[CBUUID UUIDWithString:kSoftwareRevisionStringCharacteristiceUUIDString]];
 			
 			// Enable PIO input notification
@@ -166,7 +166,7 @@ static NSString *const kSoftwareRevisionStringCharacteristiceUUIDString = @"2a28
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
 	KNS_LOG(@"didUpdateValueForCharacteristic");
-	
+    
 	if (!error) {
 		if ([characteristic.UUID kns_isEqualToUUID:[[self class] pioInputNotificationUUID]]) {
 			[self digitalIODidUpdate:characteristic.value];
